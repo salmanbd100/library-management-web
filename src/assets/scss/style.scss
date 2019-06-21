@@ -1,0 +1,24 @@
+.home {
+    .ant-layout-has-sider {
+        min-height: 100vh;
+    }
+    .ant-layout-header {
+        padding: 0 16px !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .ant-input-search {
+            width: 300px;
+        }
+    }
+    .logo {
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 20px;
+        img {
+            max-width: 100%;
+            height: 100px;
+            display: inline-block;
+        }
+    }
+}
