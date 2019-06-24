@@ -1,14 +1,29 @@
 import React, { Component } from "react";
-import { Home } from "./";
-
-export class Books extends Component {
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { GetBooks } from "../store/actions";
+class Books extends Component {
+  componentDidMount() {
+    this.props.GetBooks();
+  }
+  
   render() {
-    return (
-      <div>
-        Books
-      </div>
-    );
+    console.log("object", this.props.books);
+    return <div>Books</div>;
   }
 }
 
-export default Books;
+function mapStateToProps({ books }) {
+  return {
+    books
+  };
+}
+
+function mapActionToProps(dispatch) {
+  return bindActionCreators({ GetBooks }, dispatch);
+}
+
+export default connect(
+  mapStateToProps,
+  mapActionToProps
+)(Books);
