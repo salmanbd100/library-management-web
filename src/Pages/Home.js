@@ -1,63 +1,193 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Layout, Menu, Input, Icon } from "antd";
-const { Header, Content, Sider } = Layout;
-const { Search } = Input;
+import { Col, Row, Card, Button, Modal } from "antd";
 
-class Home extends Component {
+export class Book extends React.Component {
   state = {
-    collapsed: false
+    visible: false
   };
-
-  toggle = () => {
+  showModal = () => {
     this.setState({
-      collapsed: !this.state.collapsed
+      visible: true
+    });
+  };
+  handleCancel = () => {
+    this.setState({
+      visible: false
     });
   };
   render() {
     return (
-      <div className="home">
-        <Layout>
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-            <div className="logo">
-              <Link to="/">
-                <img src="./images/logo.png" alt="" />
-              </Link>
-            </div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-              <Menu.Item key="1">
-                <Link to="/books">Books</Link>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Link to="/users">Users</Link>
-              </Menu.Item>
-            </Menu>
-          </Sider>
-          <Layout>
-            <Header style={{ background: "#fff", padding: 0 }}>
-              <Icon
-                className="trigger"
-                type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-                onClick={this.toggle}
-              />
-              <Search
-                placeholder="Search ...."
-                onSearch={value => console.log(value)}
-                enterButton
-              />
-            </Header>
-            <Content
-              style={{
-                margin: "16px",
-                padding: 24,
-                background: "#fff",
-                minHeight: 280
-              }}
+      <Col span={6}>
+        <Card title={this.props.bookName} bordered={false}>
+          <p>
+            <b>Author :</b> {this.props.author}
+          </p>
+          <p>
+            <b>Description : </b>A dog is a type of ...{" "}
+            <Button type="link" ghost onClick={this.showModal}>
+              See more
+            </Button>
+          </p>
+          <Modal
+            title={this.props.bookName}
+            visible={this.state.visible}
+            onCancel={this.handleCancel}
+            footer={null}
+          >
+            <p>{this.props.description}</p>
+          </Modal>
+          <div className="download">
+            <a
+              href={this.props.downloadLink}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {this.props.children}
-            </Content>
-          </Layout>
-        </Layout>
+              <Button type="primary" ghost>
+                Download
+              </Button>
+            </a>
+          </div>
+        </Card>
+      </Col>
+    );
+  }
+}
+
+class Home extends Component {
+  render() {
+    return (
+      <div className="home">
+        <img src="./images/home-bg.jpeg" className="home-bg" alt="" />
+        <Row gutter={20}>
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+          <Book
+            bookName="Book Name"
+            author="Salman Rahman"
+            description="A dog is a type of domesticated animal. Known for its loyalty and
+            faithfulness, it can be found as a welcome guest in many households
+            across the world."
+            downloadLink="https://www.google.com/"
+          />
+        </Row>
       </div>
     );
   }

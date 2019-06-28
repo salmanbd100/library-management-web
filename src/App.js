@@ -1,17 +1,17 @@
 import React from "react";
-import { Home, Books, Users } from "./Pages";
+import { Home, Users } from "./Pages";
+import { Header } from "./Components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Home>
-          <div>
-            <Route path="/books" component={Books} />
-            <Route path="/users" component={Users} />
-          </div>
-        </Home>
+        <Header />
+        <div>
+          <Route path="/" component={Home} />
+          <Route path="/users" component={Users} />
+        </div>
       </Router>
     </div>
   );
